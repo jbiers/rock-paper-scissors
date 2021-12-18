@@ -1,5 +1,8 @@
 const PLAYS = ['rock', 'paper', 'scissors']
 
+let playerScore = 0
+let computerScore = 0
+
 // select computer play randomly
 function computerPlay() {
     let randomIndex = Math.floor(Math.random() * 3)
@@ -17,7 +20,7 @@ function userPlay() {
 // scissors > paper
 
 // compares user and computer play
-function playRound(playerSelection, computerSelection, playerScore, computerScore) {
+function playRound(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
         return 'You have a tie!'
     }
@@ -59,9 +62,6 @@ function playRound(playerSelection, computerSelection, playerScore, computerScor
 
 // this is the gameloop function
 function game() {
-    let playerScore = 0
-    let computerScore = 0
-
     let playerSelection
     let computerSelection
 
@@ -74,11 +74,11 @@ function game() {
     }
 
     if (playerScore > computerScore) {
-        console.log('You win the game!')
+        console.log('You win the game! Congratulations, friend.')
     }
 
     if (playerScore < computerScore) {
-        console.log('You lose the game!')
+        console.log('The computer beat you! Better luck next time.')
     }
 
     if (playerScore == computerScore) {
@@ -88,4 +88,7 @@ function game() {
 
 game()
 
-// fix the playerScore and computerScore
+// variable scopes are weird in javascript. compare it to C.
+// turn the game into an infinite loop, asking if the player wants to continue each time.
+// if player wants to end the game, show the results.
+// javascript is kinda neat
