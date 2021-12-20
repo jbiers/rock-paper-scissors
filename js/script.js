@@ -12,7 +12,7 @@ function computerPlay() {
 // receives user input and turns into lowercase
 function userPlay() {
     let userChoice = prompt('What is your play?')
-    return userChoice.toLocaleLowerCase()
+    return userChoice.toLowerCase()
 }
 
 // rock > scissors
@@ -60,17 +60,20 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// this is the gameloop function
-function game() {
+function gameLoop() {
     let playerSelection
     let computerSelection
 
-    for (let i = 0; i < 5; i = i + 1) {
+    let playAgain = 'y'
 
+    while (playAgain === 'y') {
         playerSelection = userPlay()
         computerSelection = computerPlay()
 
         console.log(playRound(playerSelection, computerSelection, playerScore, computerScore))
+
+        playAgain = prompt('Do you want to play another round? y/n').toLowerCase()
+
     }
 
     if (playerScore > computerScore) {
@@ -81,14 +84,9 @@ function game() {
         console.log('The computer beat you! Better luck next time.')
     }
 
-    if (playerScore == computerScore) {
+    if (playerScore === computerScore) {
         console.log('Game ended in a tie!')
     }
 }
 
-game()
-
-// variable scopes are weird in javascript. compare it to C.
-// turn the game into an infinite loop, asking if the player wants to continue each time.
-// if player wants to end the game, show the results.
-// javascript is kinda neat
+gameLoop()
